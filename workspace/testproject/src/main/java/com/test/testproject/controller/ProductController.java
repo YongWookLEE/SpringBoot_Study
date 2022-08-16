@@ -5,7 +5,11 @@ import com.test.testproject.data.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/product")
@@ -35,13 +39,28 @@ public class ProductController {
         return productDto;
     }
 
-    @PostMapping("/product")
-    public ProductDTO createProduct(@RequestBody ProductDTO productDTO){
+    @PostMapping("/product")                        // DTO에 달아놓은 제약조건을 실행시키려면 Valid 어노테이션을 달아야한다
+    public ResponseEntity<ProductDTO> createProduct(@Valid @RequestBody ProductDTO productDTO){
+
+        LOGGER.info("[createProduct] perform {} of Test API.", "createProduct");
+
+        // Validation Code Example 어노테이션 없을때 제약조건 세우던 코드
+        if (productDTO.getProductId().equals("") || productDTO.getProductId().isEmpty()) {
+            LOGGER.error("[createProduct] failed Response :: productId is Empty");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(productDTO);
+        }
+
         String productId = productDTO.getProductId();
         String productName = productDTO.getProductName();
         int productPrice = productDTO.getProductPrice();
         int productStock = productDTO.getProductStock();
 
-        return productService.saveProduct(productId, productName, productPrice, productStock);
+        ProductDTO response = productService.saveProduct(productId, productName, productPrice, productStock);
+
+        LOGGER.info(
+                "[createProduct] Response >> productId : {}, productName : {}, productPrice : {}, productStock : {}",
+                response.getProductId(), response.getProductName(), response.getProductPrice(),
+                response.getProductStock());
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }
