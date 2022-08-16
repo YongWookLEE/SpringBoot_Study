@@ -1,9 +1,9 @@
 # SpringBoot_Study
 
-Spring Boot
-JPA
-Hibernate
-Validation
-Logback
-Swagger
+Spring Boot \n
+JPA \n
+Hibernate \n
+Validation \n
+Logback \n
+Swagger \n
 
