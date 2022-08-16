@@ -1,0 +1,41 @@
+Lombok 이란?
+	반복되는 메소드를 Anootation을 사용하여 자동으로 작성해주는 라이브러리
+	일반적으로 VO, DTO, Model, Entity등의 데이터 클래스에서 주로 사용됨
+
+@Getter // @Setter
+	해당 클래스에 선언되어 있는 필드를 기반으로 get, set 메소드를 자동 생성
+@NoArgsConstructor
+	파라미터가 없는 생성자를 생성
+@AllArgsConstructor
+	모든 필드값을 파라미터로 갖는 생성자를 생성
+@RequiredArgsConstructor
+	필드값 중 final이나 @NotNull인 값을 갖는 생성자를 생성
+@ToString
+	toString 메소드를 자동으로 생성해주는 기능
+	@ToString(exclude="email) 속성을 사용하요 특정 필드를 제외시킬수 있음
+@EqualsAndHashCode
+	equals, hashcode 메소드를 자동으로 생성
+	equals: 두 객체의 내용이 같은지 동등성(equality)를 비교하는 연산자
+	hashCode: 두 객체가 같은 객체인지 동일성(identity)를 비교하는 연산자
+	callSuper 속성을 통해 메서드 생성시 부모 클래스의 필드까지 고려할지 여부 설정 가능
+@Data
+	@Getter, @Setter, @RequiredArgsConstructor, @ToString, @EqualsAndHashCode 모두 추가
+	불필요한 기능까지 추가되는 경우가 많아 자주 사용하지 않는다
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

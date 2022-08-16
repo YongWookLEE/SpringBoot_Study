@@ -1,0 +1,62 @@
+@RestController
+	- Spring Framework 4버전부터 사용가능한 어노테이션
+	- @Controller에 @ResponseBody가 결합된 어노테이션
+	- 컨트롤러 클래스 하위 메소드에 @ResponseBody 어노테이션을 붙이지 않아도 문자열과 JSON 등을 전송 가능
+	- View를 거치지 않고 HTTP ResponseBody에 직접 Return값을 담아 보내게 됨
+
+	Client -> Dispatcher Servlet -> Handler Mapping -> Controller -> Message Converter -> HTTP Response -> Client
+
+
+@RequestMapping
+	- MVC의 핸들러 매핑을 위해서 DefaultAnnotationHandlerMapping을 사용
+	- DefaultAnnotationHandlerMapping 매핑정보로 @RequestMapping 어노테이션을 활용
+	- 클래스와 메소드의 RequestMapping을 통해 URL을 매핑하여 경로를 설정하여 해당 메소드에서 처리
+	
+	스프링 4.3버전 부터 메소드 지정보다 간단하게 사용할 수 있는 어노테이션이 나옴 (@GetMapping, @PostMapping ..)
+
+GET API
+
+@GetMapping
+	- 별도의 파라미터 없이 GET API를 호출
+
+@PathVariable
+	- GET 형식의 요청에서 파라미터를 전달하기 위해 URL에 값을 담아 요청하는 방법
+	- @GetMapping에서 사용된 {변수}의 이름과 메소드의 매개변수와 일치 시키면 @PathVariable만 달아놓으면 되고
+	  다르면 @PathVariable("URI에 명시된 변수명")으로 달아야 한다.
+
+@RequestParam
+	- GET 형식의 요청에서 쿼리 문자열을 전달하기 위해 사용되는 방법
+	- '?'를 기준으로 우측에 {키}={값}의 형태로 전달되며, 복수 형태로 전달할 경우 &을 사용함
+
+POST API
+	- 리소스를 추가하기 위해 사용되는 API
+	- 일반적으로 추가하고자 하는 Resource를 http body에 추가하여 서버에 요청
+	- 그렇게 때문에 @RequestBody를 이용하여 body에 담겨있는 값을 받아야함.
+@PostMapping
+	- POST API를 제작하기 위해 사용되는 어노테이션
+	- RequestMapping + POST method 의 조합
+
+@Configuration
+	- 어노테이션 기반의 환경 구성을 돕는 어노테이션
+	- IoC Container에게 해당 클래스를 Bean 구성 Class임을 알려줌
+
+@Bean
+	- 개발자가 직접 제어가 불가능한 외부 라이브러리 등을 Bean으로 만들 경우에 사용
+
+PUT API
+	- 리소스가 존재하면 갱신하고, 리소스가 없을 경우에는 새로 생성해주는 API
+	- 업데이트를 위한 메소드
+	- 동작 방식은 POST API와 동일
+
+DELETE API
+	- 서버를 통해 리소스를 삭제하기 위해 사용되는 API
+	- 일반적으로 @PathVariable을 통해 리소스 ID 등을 받아 처리
+
+ResponseEntity
+	- Spring Framework에서 제공하는 클래스 중 HttpEntity 클래스를 상속받아 사용하는 클래스
+	- 사용자의 HttpRequest에 대한 응답 데이터를 포함
+	- 포함하는 클래스 HttpStatus, HttpHeader, HttpBody
+
+
+ 
+
