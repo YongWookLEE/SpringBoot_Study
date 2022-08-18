@@ -37,4 +37,14 @@
 	@ControllerAdvice로 설정된 클래스 내에서 메소드로 정의할 수 있지만, 각 Controller안에 설정도 가능
 	전역 설정(@ControllerAdvice)보다 지역 설정(Controller)으로 정의한 Handler가 우선순위를 가짐
 
+HttpStatus (Enum Class)
+	HttpStatus(value, series, reasonPhrase)
+Custom Exception
+	error type - HttpStatus의 reasonPhrase
+	error code - HttpStatus의 value
+	message - 상황별 디테일 Message
+
+		
+
+
 

@@ -1,4 +1,4 @@
-package com.test.testproject.exception;
+package com.test.testproject.common.exception;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,5 +32,17 @@ public class TestExceptionHandler {
         map.put("message","에러 발생");
 
         return new ResponseEntity<>(map,responseHeaders,httpStatus);
+    }
+
+    @ExceptionHandler(value = TestException.class)
+    public ResponseEntity<Map<String,String>> ExceptionHandler(TestException e){
+        HttpHeaders responseHeaders = new HttpHeaders();
+
+        Map<String, String> map = new HashMap<>();
+        map.put("error type", e.getHttpStatusType());
+        map.put("code",Integer.toString(e.getHttpStatusCode())); //Map<String, Object>로 하면 변환작업 불필요
+        map.put("message",e.getMessage());                       //e.getHttpStatusCode()가 Integer라서 String으로 형변환
+
+        return new ResponseEntity<>(map,responseHeaders,e.getHttpStatus());
     }
 }

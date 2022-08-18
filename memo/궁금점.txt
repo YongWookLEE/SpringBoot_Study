@@ -1,4 +1,5 @@
 
+직렬화
+역직렬화
 HttpHeaders
-HttpStatus
 ResponseEntity
