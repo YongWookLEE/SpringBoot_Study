@@ -1,0 +1,23 @@
+JPA 순서?
+1. Entity(Class)
+2. Repository(Interface) extends JpaRepository (싱글톤패턴:여러곳에서 사용 가능)
+3. DAO(Interface)
+   Entity 메서드 선언
+4. DAOImpl(Class) implements DAO
+   Repository선언 및 주입, 메서드 오버라이딩
+5. Handler(Interface)
+   Entity 메서드 선언
+6. HandlerImpl(Class)
+   DAO선언 및 주입, 메서드 오버라이딩
+7. Service
+   DTO 메서드 선언
+8. ServiceImpl
+   Handler선언 및 주입, 메서드 오버라이딩
+9. Controller
+   Service선언 및 주입, 요청에 따라 다리 역할
+10.클라이언트 요청
+
+Spring Boot 서비스 구조?
+Client  <-DTO->  Controller  <-DTO->  Service  <-Entity->  DAO(Repository)  <-Entity->  DB
+                        |               |
+                     ServiceImpl      DAOImpl

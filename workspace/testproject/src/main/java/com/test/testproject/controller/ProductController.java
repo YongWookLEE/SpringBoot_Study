@@ -1,5 +1,7 @@
 package com.test.testproject.controller;
 
+import com.test.testproject.common.Constants;
+import com.test.testproject.common.exception.TestException;
 import com.test.testproject.data.dto.ProductDTO;
 import com.test.testproject.data.service.ProductService;
 import org.slf4j.Logger;
@@ -62,5 +64,15 @@ public class ProductController {
                 response.getProductId(), response.getProductName(), response.getProductPrice(),
                 response.getProductStock());
         return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    @DeleteMapping("/delete/{productId}")
+    public ProductDTO deleteProduct(@PathVariable String productId){
+        return null;
+    }
+
+    @PostMapping("/exception")
+    public void exceptionTest() throws TestException{
+        throw new TestException(Constants.ExceptionClass.PRODUCT,HttpStatus.NOT_FOUND,"의도한 에러가 발생");
     }
 }
