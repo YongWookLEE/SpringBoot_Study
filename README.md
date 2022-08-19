@@ -6,4 +6,5 @@ Hibernate <br>
 Validation <br>
 Logback <br>
 Swagger <br>
+JUnit <br>
 

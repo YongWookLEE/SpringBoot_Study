@@ -10,12 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class ProductHandlerImpl implements ProductDataHandler {
+public class ProductDataHandlerImpl implements ProductDataHandler {
 
     public ProductDAO productDAO;
 
     @Autowired
-    public ProductHandlerImpl(ProductDAO productDAO) {
+    public ProductDataHandlerImpl(ProductDAO productDAO) {
         this.productDAO = productDAO;
     }
 
