@@ -3,3 +3,7 @@
 역직렬화
 HttpHeaders
 ResponseEntity
+
+의존성 주입(DI, Dependency Injection)
+제어역전(IOC, Inversion of Control)
+관점 지향 프로그래밍(AOP)
